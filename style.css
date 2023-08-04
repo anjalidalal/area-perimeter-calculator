@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.square-container {
+  margin-top: 20px;
+  width: 60px;
+  height: 77px;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.square {
+  width: 59px;
+  height: 59px;
+  background-color: lightblue;
+  border: 1px solid #000;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+#grid-container {
+  width: 244px;
+  margin: 10px;
+  border: 1px solid #000;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.grid {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #000;
+}
+.buttons {
+  display: flex;
+}
+button {
+  margin: 20px;
+  padding: 10px;
+}
