@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Area & Perimeter Builder</title
-  </head>
-  <body>
-    <h1>Area & Perimeter Builder</h1>
-    <div id="grid-container">
-      <div class="grid" id="cell-1"></div>
-      <div class="grid" id="cell-2"></div>
-      <div class="grid" id="cell-3"></div>
-      <div class="grid" id="cell-4"></div>
-      <div class="grid" id="cell-5"></div>
-      <div class="grid" id="cell-6"></div>
-      <div class="grid" id="cell-7"></div>
-      <div class="grid" id="cell-8"></div>
-      <div class="grid" id="cell-9"></div>
-      <div class="grid" id="cell-10"></div>
-      <div class="grid" id="cell-11"></div>
-      <div class="grid" id="cell-12"></div>
-      <div class="grid" id="cell-13"></div>
-      <div class="grid" id="cell-14"></div>
-      <div class="grid" id="cell-15"></div>
-      <div class="grid" id="cell-16"></div>
-    </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <title>Area & Perimeter Builder</title </head>
+
+<body>
+  <h1>Area & Perimeter Builder</h1>
+  <div class="result">
+    <p>Area: <span id="area">0</span></p>
+    <p>Perimeter: <span id="perimeter">0</span></p>
+  </div>
+  <div id="grid-container">
+    <div class="grid" id="cell-1"></div>
+    <div class="grid" id="cell-2"></div>
+    <div class="grid" id="cell-3"></div>
+    <div class="grid" id="cell-4"></div>
+    <div class="grid" id="cell-5"></div>
+    <div class="grid" id="cell-6"></div>
+    <div class="grid" id="cell-7"></div>
+    <div class="grid" id="cell-8"></div>
+    <div class="grid" id="cell-9"></div>
+    <div class="grid" id="cell-10"></div>
+    <div class="grid" id="cell-11"></div>
+    <div class="grid" id="cell-12"></div>
+    <div class="grid" id="cell-13"></div>
+    <div class="grid" id="cell-14"></div>
+    <div class="grid" id="cell-15"></div>
+    <div class="grid" id="cell-16"></div>
+  </div>
+  <div class="bottom-section">
+    <button id="submit">Submit</button>
     <div class="square-container">
       <div class="square" id="sq-1" draggable="true"></div>
       <div class="square" id="sq-2" draggable="true"></div>
@@ -44,14 +51,9 @@
       <div class="square" id="sq-15" draggable="true"></div>
       <div class="square" id="sq-16" draggable="true"></div>
     </div>
-    <!-- <div id="info">
-      <p>Area: <span id="area">0</span></p>
-      <p>Perimeter: <span id="perimeter">0</span></p>
-    </div> -->
-     <div class="buttons">
-      <button id="submit">Submit</button>
-      <button id="reset">Reset</button>
-     </div>
-    <script src="main.js"></script>
-  </body>
+    <button id="reset">Reset</button>
+  </div>
+  <script src="main.js"></script>
+</body>
+
 </html>
