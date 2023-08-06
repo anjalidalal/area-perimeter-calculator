@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -5,12 +10,25 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {
-  text-align: center;
+  font-size: 23px;
 }
-
+#perimeter,
+#area {
+  margin-left: 10px;
+}
+.result {
+  margin: 10px 0px;
+}
+.result p {
+  font-size: 18px;
+  font-weight: 500;
+}
 #square-container {
   margin-top: 20px;
   width: 60px;
@@ -21,9 +39,9 @@ h1 {
 }
 
 .square {
-  width: 60px;
-  height: 60px;
-  background-color: lightblue;
+  width: 58px;
+  height: 58px;
+  background-color: #f0b9c2;
   cursor: pointer;
   display: flex;
   flex-shrink: 0;
@@ -35,7 +53,7 @@ h1 {
 }
 
 #grid-container {
-  width: 244px;
+  width: 240px;
   margin: 10px;
   border: 1px solid #000;
   display: grid;
@@ -49,8 +67,31 @@ h1 {
 .bottom-section {
   display: flex;
   align-items: center;
+  gap: 12pxpx;
 }
 button {
   margin: 10px 20px;
-  padding: 10px;
+  padding: 10px 15px;
+  background-color: #1191e0;
+  border: 2px solid #1191e0;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: #fff;
+}
+button:active {
+  background-color: #fff;
+  color: #1191e0;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 26px;
+  }
+  .result {
+    margin: 20px 0px;
+  }
+  .bottom-section {
+    gap: 20px;
+  }
 }
