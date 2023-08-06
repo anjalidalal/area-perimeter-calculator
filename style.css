@@ -26,7 +26,7 @@ h1 {
   margin: 10px 0px;
 }
 .result p {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 #square-container {
@@ -54,7 +54,7 @@ h1 {
 
 #grid-container {
   width: 240px;
-  margin: 10px;
+  margin-top: 10px;
   border: 1px solid #000;
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -87,14 +87,39 @@ button:active {
   background-color: #1191e0;
 }
 
+#toast {
+  background-color: #333;
+  color: #fff;
+  padding: 15px 10px;
+  border-radius: 4px;
+  display: none;
+  margin-top: 10px;
+}
+
 @media (min-width: 768px) {
   h1 {
     font-size: 26px;
   }
   .result {
-    margin: 20px 0px;
+    margin: 10px 0px;
+    font-size: 18px;
   }
   .bottom-section {
     gap: 20px;
+  }
+  #grid-container {
+    margin: 10px;
+  }
+  #toast {
+    position: fixed;
+    top: 10%;
+    left: 85%;
+    width: 195px;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 4px;
+    display: none;
   }
 }

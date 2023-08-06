@@ -4,10 +4,12 @@ const submitButton = document.getElementById("submit");
 const resetButton = document.getElementById("reset");
 const perimeterElement = document.getElementById("perimeter");
 const areaElement = document.getElementById("area");
+const toastElement = document.getElementById("toast");
 
 let perimeter = 0;
 let area = 0;
 
+// URL parameters from user
 const params = new URLSearchParams(window.location.search);
 
 const areaFromParams = Number(params.get("area"));
@@ -107,27 +109,39 @@ const drop = (event) => {
 };
 
 //funtion for updating perimeterElement and areaElement innerText on submit
+let message = "";
 
 const handleSubmit = () => {
   if (areaFromParams && perimeterFromParams) {
     if (areaFromParams === area && perimeterFromParams === perimeter) {
-      console.log("Correct Answer");
+      message = "Correct Answer";
     } else {
-      console.log("Incorrect Answer");
+      message = "Incorrect Answer";
     }
   } else if (areaFromParams) {
     if (areaFromParams === area) {
-      console.log("Correct Answer");
+      message = "Correct Answer";
     } else {
-      console.log("Incorrect Answer");
+      message = "Incorrect Answer";
     }
   } else if (perimeterFromParams) {
     if (perimeterFromParams === perimeter) {
-      console.log("Correct Answer");
+      message = "Correct Answer";
     } else {
-      console.log("Incorrect Answer");
+      message = "Incorrect Answer";
     }
   }
+  showToast(message);
+};
+
+// function for showing toast on submitting and comapring URL parameters area and perimeter with
+const showToast = (msg) => {
+  toastElement.textContent = msg;
+  toastElement.style.display = "block";
+
+  setTimeout(function () {
+    toastElement.style.display = "none";
+  }, 3000);
 };
 
 //funtion for reset
