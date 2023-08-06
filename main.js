@@ -1,9 +1,10 @@
-let squares = document.querySelectorAll(".square");
-let grids = document.querySelectorAll(".grid");
-let submitButton = document.getElementById("submit");
-let resetButton = document.getElementById("reset");
-let perimeterElement = document.getElementById("perimeter");
-let areaElement = document.getElementById("area");
+const squares = document.querySelectorAll(".square");
+const grids = document.querySelectorAll(".grid");
+const submitButton = document.getElementById("submit");
+const resetButton = document.getElementById("reset");
+const perimeterElement = document.getElementById("perimeter");
+const areaElement = document.getElementById("area");
+
 let perimeter = 0;
 let area = 0;
 
@@ -32,6 +33,7 @@ const updateMatrix = (num) => {
 //function for calculating area and perimeter once the matrix is updated
 const calcAreaAndPerimeter = () => {
   let sideCount = 0;
+
   for (let row = 0; row < matrix.length; row++) {
     for (let col = 0; col < matrix[0].length; col++) {
       const square = matrix[row][col];
@@ -41,27 +43,24 @@ const calcAreaAndPerimeter = () => {
         //top
         if (row > 0 && matrix[row - 1][col] === 1) {
           maxContribution--;
-          console.log(`Top : ${maxContribution}`);
         }
         //right
         if (col < matrix.length - 1 && matrix[row][col + 1] === 1) {
           maxContribution--;
-          console.log(`Right : ${maxContribution}`);
         }
         //bottom
         if (row < matrix.length - 1 && matrix[row + 1][col] === 1) {
           maxContribution--;
-          console.log(`Bottom : ${maxContribution}`);
         }
         //left
         if (col > 0 && matrix[row][col - 1] === 1) {
           maxContribution--;
-          console.log(`Left : ${maxContribution}`);
         }
         perimeter += maxContribution;
       }
     }
   }
+
   area = sideCount;
 };
 
@@ -78,21 +77,27 @@ const dragOver = (event) => {
 //function for dropping the dragged element on target location
 const drop = (event) => {
   event.preventDefault();
+
   let data = event.dataTransfer.getData("text");
   let draggedElement = document.getElementById(data);
 
-  event.target.appendChild(draggedElement);
+  if (!event.target.classList.contains("dropped")) {
+    event.target.classList.add("dropped");
+    draggedElement.classList.add("dropped");
 
-  let id = event.target.id?.split("-")[1];
+    event.target.appendChild(draggedElement);
+  }
+
+  let id = +event.target.id?.split("-")[1];
   updateMatrix(id);
-  console.log(matrix);
-
-  calcAreaAndPerimeter();
-  console.log(perimeter);
 };
 
 //funtion for updating perimeterElement and areaElement innerText on submit
 const handleSubmit = () => {
+  perimeter = 0;
+  area = 0;
+
+  calcAreaAndPerimeter();
   perimeterElement.innerText = perimeter;
   areaElement.innerText = area;
 };
@@ -100,12 +105,24 @@ const handleSubmit = () => {
 //funtion for reset
 const handleReset = () => {
   const squares = document.querySelectorAll(".square");
+
   squares.forEach((square) => {
+    square.classList.remove("dropped");
     document.getElementById("square-container").appendChild(square);
   });
 
-  areaElement.innerText = "0";
-  perimeterElement.innerText = "0";
+  grids.forEach((grid) => {
+    grid.classList.remove("dropped");
+  });
+
+  //reset matrix value to one
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix.length; j++) {
+      matrix[i][j] = 0;
+    }
+  }
+
+  handleSubmit();
 };
 
 //mapping and attaching drag eventlistener on all square boxes

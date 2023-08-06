@@ -83,6 +83,9 @@ button:active {
   background-color: #fff;
   color: #1191e0;
 }
+.dropped {
+  background-color: #1191e0;
+}
 
 @media (min-width: 768px) {
   h1 {
