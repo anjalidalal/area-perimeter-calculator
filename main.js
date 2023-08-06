@@ -92,6 +92,8 @@ const drop = (event) => {
   let data = event.dataTransfer.getData("text");
   let draggedElement = document.getElementById(data);
 
+  draggedElement.removeEventListener("dragstart", dragStart);
+
   if (!event.target.classList.contains("dropped")) {
     event.target.classList.add("dropped");
     draggedElement.classList.add("dropped");
@@ -114,21 +116,27 @@ let message = "";
 const handleSubmit = () => {
   if (areaFromParams && perimeterFromParams) {
     if (areaFromParams === area && perimeterFromParams === perimeter) {
-      message = "Correct Answer";
+      message = "(Correct Answer)";
+      toastElement.style.color = "green";
     } else {
-      message = "Incorrect Answer";
+      message = "(Incorrect Answer)";
+      toastElement.style.color = "red";
     }
   } else if (areaFromParams) {
     if (areaFromParams === area) {
-      message = "Correct Answer";
+      message = "(Correct Answer)";
+      toastElement.style.color = "green";
     } else {
-      message = "Incorrect Answer";
+      message = "(Incorrect Answer)";
+      toastElement.style.color = "red";
     }
   } else if (perimeterFromParams) {
     if (perimeterFromParams === perimeter) {
-      message = "Correct Answer";
+      message = "(Correct Answer)";
+      toastElement.style.color = "green";
     } else {
-      message = "Incorrect Answer";
+      message = "(Incorrect Answer)";
+      toastElement.style.color = "red";
     }
   }
   showToast(message);

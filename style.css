@@ -88,10 +88,7 @@ button:active {
 }
 
 #toast {
-  background-color: #333;
-  color: #fff;
-  padding: 15px 10px;
-  border-radius: 4px;
+  font-weight: 600;
   display: none;
   margin-top: 10px;
 }
@@ -109,17 +106,5 @@ button:active {
   }
   #grid-container {
     margin: 10px;
-  }
-  #toast {
-    position: fixed;
-    top: 10%;
-    left: 85%;
-    width: 195px;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
-    padding: 12px 15px;
-    border-radius: 4px;
-    display: none;
   }
 }
