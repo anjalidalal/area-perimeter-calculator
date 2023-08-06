@@ -8,6 +8,13 @@ const areaElement = document.getElementById("area");
 let perimeter = 0;
 let area = 0;
 
+const params = new URLSearchParams(window.location.search);
+
+const areaFromParams = Number(params.get("area"));
+const perimeterFromParams = Number(params.get("perimeter"));
+
+console.log(areaFromParams, perimeterFromParams);
+
 const matrix = [
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -32,6 +39,8 @@ const updateMatrix = (num) => {
 
 //function for calculating area and perimeter once the matrix is updated
 const calcAreaAndPerimeter = () => {
+  perimeter = 0;
+  area = 0;
   let sideCount = 0;
 
   for (let row = 0; row < matrix.length; row++) {
@@ -90,22 +99,42 @@ const drop = (event) => {
 
   let id = +event.target.id?.split("-")[1];
   updateMatrix(id);
-};
 
-//funtion for updating perimeterElement and areaElement innerText on submit
-const handleSubmit = () => {
-  perimeter = 0;
-  area = 0;
-
+  // area and perimeter calculated and assign into areaElement and perimeter element
   calcAreaAndPerimeter();
   perimeterElement.innerText = perimeter;
   areaElement.innerText = area;
+};
+
+//funtion for updating perimeterElement and areaElement innerText on submit
+
+const handleSubmit = () => {
+  if (areaFromParams && perimeterFromParams) {
+    if (areaFromParams === area && perimeterFromParams === perimeter) {
+      console.log("Correct Answer");
+    } else {
+      console.log("Incorrect Answer");
+    }
+  } else if (areaFromParams) {
+    if (areaFromParams === area) {
+      console.log("Correct Answer");
+    } else {
+      console.log("Incorrect Answer");
+    }
+  } else if (perimeterFromParams) {
+    if (perimeterFromParams === perimeter) {
+      console.log("Correct Answer");
+    } else {
+      console.log("Incorrect Answer");
+    }
+  }
 };
 
 //funtion for reset
 const handleReset = () => {
   const squares = document.querySelectorAll(".square");
 
+  // square box append to square conatiner or set to their original position
   squares.forEach((square) => {
     square.classList.remove("dropped");
     document.getElementById("square-container").appendChild(square);
@@ -115,14 +144,16 @@ const handleReset = () => {
     grid.classList.remove("dropped");
   });
 
-  //reset matrix value to one
+  // reset matrix value to one
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix.length; j++) {
       matrix[i][j] = 0;
     }
   }
 
-  handleSubmit();
+  //reset result to zero
+  perimeterElement.innerText = "0";
+  areaElement.innerText = "0";
 };
 
 //mapping and attaching drag eventlistener on all square boxes
