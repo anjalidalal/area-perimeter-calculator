@@ -11,7 +11,7 @@ h1 {
   text-align: center;
 }
 
-.square-container {
+#square-container {
   margin-top: 20px;
   width: 60px;
   height: 77px;
